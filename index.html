@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NCAST - Podcast App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://res.cloudinary.com/dd0o9sf5m/image/upload/v1745079776/NCAST1-removebg-preview_f4z5yh.png" type="image/png">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://res.cloudinary.com/dd0o9sf5m/image/upload/v1745079776/NCAST1-removebg-preview_f4z5yh.png" alt="NCAST Logo" id="logo">
+            <h1>NCAST</h1>
+        </div>
+        <p class="tagline">Discover. Listen. Repeat. — The Ultimate Home for Your Favorite Podcasts.</p>
+        <input type="text" id="searchInput" placeholder="Search podcasts...">
+    </header>
+    
+
+<nav id="genre-buttons">
+    <button onclick="filterGenre('All')">All</button>
+    <button onclick="filterGenre('Arts')">Arts</button>
+    <button onclick="filterGenre('Motivation')">Motivation</button>
+    <button onclick="filterGenre('Comedy')">Comedy</button>
+    <button onclick="filterGenre('Thriller')">Thriller</button>
+    <button onclick="filterGenre('Tech')">Tech</button>
+    <button onclick="filterGenre('Education')">Education</button>
+    <button onclick="filterGenre('News')">News</button>
+</nav>
+
+<main id="podcast-list">
+    <!-- Podcasts will load here -->
+</main>
+
+<footer>
+    Developed with 💜 by Charul Pareek
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

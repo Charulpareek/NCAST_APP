@@ -1,0 +1,121 @@
+/* Resetting default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background Gradient */
+body {
+    background: linear-gradient(135deg, #6a0dad, #9b59b6);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container for the login form */
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(106, 13, 173, 0.4);
+    text-align: center;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+/* Logo section */
+#logo {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #6a0dad;
+    font-size: 2rem;
+}
+
+/* Form heading */
+h2 {
+    color: #6a0dad;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-field {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* Remember Me Checkbox */
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.remember-me input {
+    margin-right: 10px;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    margin-bottom: 15px;
+}
+
+.forgot-password a {
+    color: #6a0dad;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #6a0dad;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #8e44ad;
+}
+
+/* Error message */
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+}

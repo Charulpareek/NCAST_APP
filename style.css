@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f2fb;
+    color: #333;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+    background-color:#9370DB;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;  /* Adjust the space between logo and title */
+}
+
+#logo {
+    width: 40px;  /* Adjust the size of the logo */
+    height: auto;
+}
+
+header h1 {
+    font-size: 2em;
+}
+
+.tagline {
+    font-size: 1.2em;
+    margin-top: 10px;
+    font-style: italic;
+    color: #e0d0f8;
+}
+
+#searchInput {
+    margin-top: 10px;
+    padding: 10px;
+    width: 50%;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+}
+
+nav {
+    margin: 20px;
+    text-align: center;
+}
+
+nav button {
+    background-color: #d6b3f0;
+    color: #4b0082;
+    border: none;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background-color: #b366ff;
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    flex: 1;
+}
+
+.podcast {
+    background-color: white;
+    border: 1px solid #e1d9ec;
+    border-radius: 12px;
+    margin: 20px;
+    padding: 20px;
+    width: 320px; /* Increased from 280px */
+    box-shadow: 0 6px 12px rgba(106, 13, 173, 0.2);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.podcast:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 20px rgba(106, 13, 173, 0.4);
+}
+
+.podcast img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain; /* Show full image without cropping */
+    object-position: center;
+    border-radius: 10px;
+    background-color: #fff; /* or #eee for a soft gray */
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+
+.podcast h3 {
+    color: #6a0dad;
+}
+
+.podcast p {
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+#podcast-detail {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#podcast-detail h2 {
+    color: #6a0dad;
+}
+
+#podcast-detail p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+#podcast-detail audio {
+    margin-top: 10px;
+    width: 100%;
+}
+
+footer {
+    background-color: #9370DB;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    position: sticky;
+    bottom: 0;
+}

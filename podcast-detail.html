@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Podcast Detail</title>
+  <style>
+    body {
+      background-color: #f7f2fb;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #6a0dad;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(106, 13, 173, 0.2);
+    }
+
+    img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #6a0dad;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    #episodes {
+      margin-top: 30px;
+    }
+
+    #episodes h3 {
+      color: #6a0dad;
+      margin-bottom: 10px;
+    }
+
+    #episodes h4 {
+      margin-top: 15px;
+      color: #4b0082;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #eee;
+      margin: 20px 0;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #6a0dad;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .back-button:hover {
+      background-color: #4b0082;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎧 Podcast Detail</h1>
+  </header>
+
+  <main>
+    <h2 id="title">Loading...</h2>
+    <p id="description"></p>
+    <img id="cover" src="" alt="Podcast Cover">
+    
+    <div id="episodes">
+      <h3>Latest Episodes</h3>
+      <p>Loading...</p>
+    </div>
+
+    <a href="index.html" class="back-button">← Back to Home</a>
+  </main>
+
+  <script>
+    const podcast = JSON.parse(localStorage.getItem("selectedPodcast"));
+    document.getElementById('title').textContent = podcast.title;
+    document.getElementById('description').textContent = podcast.description;
+    document.getElementById('cover').src = podcast.image;
+
+    if (podcast.feed) {
+      fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(podcast.feed)}`)
+        .then(res => res.json())
+        .then(data => {
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(data.contents, "text/xml");
+          const items = xml.querySelectorAll("item");
+          const episodesDiv = document.getElementById("episodes");
+          episodesDiv.innerHTML = "<h3>Latest Episodes</h3>";
+
+          items.forEach((item, i) => {
+            if (i >= 5) return;
+            const title = item.querySelector("title").textContent;
+            const audio = item.querySelector("enclosure")?.getAttribute("url");
+            const pubDate = item.querySelector("pubDate")?.textContent || "";
+
+            const epDiv = document.createElement("div");
+            epDiv.innerHTML = `
+              <h4>${title}</h4>
+              <p style="font-size:0.85em;color:#777;">${pubDate}</p>
+              <audio controls src="${audio}"></audio>
+              <hr>
+            `;
+            episodesDiv.appendChild(epDiv);
+          });
+        })
+        .catch(err => {
+          document.getElementById("episodes").innerHTML = "<p>Failed to load episodes.</p>";
+          console.error(err);
+        });
+    } else if (podcast.audio) {
+      document.getElementById("episodes").innerHTML = `
+        <h3>Now Playing</h3>
+        <audio controls src="${podcast.audio}"></audio>
+      `;
+    } else {
+      document.getElementById("episodes").innerHTML = "<p>No episode feed available.</p>";
+    }
+  </script>
+
+</body>
+</html>

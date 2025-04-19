@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - NCAST</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1> 
+    <div class="logo-container">
+        <img src="https://res.cloudinary.com/dd0o9sf5m/image/upload/v1745079776/NCAST1-removebg-preview_f4z5yh.png" alt="NCAST Logo" id="logo">
+        NCAST</h1>
+    </div>
+</header>
+
+<main style="display: flex; justify-content: center; align-items: center; height: 70vh; flex-direction: column;">
+    <input type="text" id="username" placeholder="Username" style="padding: 10px; margin: 10px; width: 250px; border-radius: 10px; border: 1px solid #ccc;">
+    <input type="password" id="password" placeholder="Password" style="padding: 10px; margin: 10px; width: 250px; border-radius: 10px; border: 1px solid #ccc;">
+    <button onclick="login(event)" style="background-color: #6a0dad; color: white; padding: 10px 20px; border: none; border-radius: 10px; cursor: pointer; margin-top: 10px;">Login</button>
+    <div id="error" style="color: red; margin-top: 10px;"></div>
+</main>
+
+<footer>
+    Developed with 💜 by Charul Pareek
+</footer>
+
+<script>
+    function login(event) {
+        event.preventDefault(); // Prevent the form from submitting and reloading the page
+        
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+    
+        if(username === "charul" && password === "ncast123") {
+            window.location.href = "index.html"; // redirect to home page
+        } else {
+            document.getElementById('error').innerText = "Invalid username or password!";
+        }
+    }
+</script>
+
+</body>
+</html>
