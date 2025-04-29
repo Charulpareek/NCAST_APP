@@ -16,8 +16,8 @@
 </header>
 
 <main style="display: flex; justify-content: center; align-items: center; height: 70vh; flex-direction: column;">
-    <input type="text" id="username" placeholder="Username" style="padding: 10px; margin: 10px; width: 250px; border-radius: 10px; border: 1px solid #ccc;">
-    <input type="password" id="password" placeholder="Password" style="padding: 10px; margin: 10px; width: 250px; border-radius: 10px; border: 1px solid #ccc;">
+    <input type="text" id="username" placeholder="Enter your email" style="padding: 10px; margin: 10px; width: 250px; border-radius: 10px; border: 1px solid #ccc;">
+    <input type="password" id="password" placeholder="Enter your password" style="padding: 10px; margin: 10px; width: 250px; border-radius: 10px; border: 1px solid #ccc;">
     <button onclick="login(event)" style="background-color: #6a0dad; color: white; padding: 10px 20px; border: none; border-radius: 10px; cursor: pointer; margin-top: 10px;">Login</button>
     <div id="error" style="color: red; margin-top: 10px;"></div>
 </main>
@@ -27,19 +27,35 @@
 </footer>
 
 <script>
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isStrongPassword(password) {
+        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(password);
+    }
+
     function login(event) {
-        event.preventDefault(); // Prevent the form from submitting and reloading the page
-        
-        const username = document.getElementById('username').value.trim();
+        event.preventDefault();
+        const email = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value.trim();
-    
-        if(username === "charul" && password === "ncast123") {
-            window.location.href = "home.html"; // redirect to home page
-        } else {
-            document.getElementById('error').innerText = "Invalid username or password!";
+        const errorDiv = document.getElementById('error');
+
+        if (!isValidEmail(email)) {
+            errorDiv.innerText = "Please enter a valid email address.";
+            return;
         }
+
+        if (!isStrongPassword(password)) {
+            errorDiv.innerText = "Password must be 8+ characters with uppercase, lowercase, number & special character.";
+            return;
+        }
+
+        // Successful login (for demo)
+        window.location.href = "home.html";
     }
 </script>
 
 </body>
 </html>
+
